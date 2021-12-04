@@ -1,10 +1,6 @@
-from copy import deepcopy
-
 class Bingo:
     def __init__(self):
-        self.input = open('data.txt').read().splitlines()
-        self.called = self.input.pop(0).split(',')
-        self.bingo_cards = self.card_maker(self.input)
+        self.called = open('data.txt').readline().split(',')
 
     def card_maker(self, cards):
         count = 1
@@ -21,7 +17,7 @@ class Bingo:
         return bingo_cards
 
     def call_nums(self,part_one=True):
-        bingo_cards = deepcopy(self.bingo_cards)
+        bingo_cards = self.card_maker(open('data.txt').read().splitlines())
         winners = {}
 
         for num in self.called:
